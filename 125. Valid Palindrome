@@ -1,0 +1,29 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        for(int i=0;i<s.size();i++){
+            s[i]=tolower(s[i]);
+        }
+       for(int j=0;j<s.size();j++){
+            if((s[j]<'a' || s[j]>'z') && s[j]!='0' &&(s[j]<'0' ||s[j]>'9')){
+                s.erase(j,1);
+                j--;
+            }
+       }
+       int a=0;
+       int b=s.size()-1;
+       string p=s;
+       while(a<s.size()){
+        p[a]=s[b];
+        a++;
+        b--;
+       }
+       for(int i=0;i<s.size();i++){
+        if(p[i]!=s[i]){
+            return false;
+        }
+       }
+
+       return true;
+    }
+};
